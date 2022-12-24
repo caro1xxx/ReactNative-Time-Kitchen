@@ -1,0 +1,18 @@
+export const food = [
+  {path: require('../img/list/qingcai.png'), id: 1, time: 5, key: '青菜'},
+  {path: require('../img/list/dasuan.png'), id: 2, time: 2, key: '大蒜'},
+  {path: require('../img/list/ningmeng.png'), id: 3, time: 8, key: '柠檬'},
+  {path: require('../img/list/tudou.png'), id: 4, time: 10, key: '土豆'},
+  {path: require('../img/list/yangchong.png'), id: 5, time: 1},
+  {path: require('../img/list/hongshu.png'), id: 6, time: 12},
+  {path: require('../img/list/doufu.png'), id: 7, time: 18},
+  {path: require('../img/list/rou.png'), id: 8, time: 20},
+  {path: require('../img/list/wosun.png'), id: 9, time: 5},
+  {path: require('../img/list/yu.png'), id: 10, time: 25},
+  {path: require('../img/list/yumi.png'), id: 11, time: 15},
+  {path: require('../img/list/xiaoji.png'), id: 12, time: 35},
+  {path: require('../img/list/jidan.png'), id: 13, time: 15},
+  {path: require('../img/list/dachong.png'), id: 14, time: 8},
+  {path: require('../img/list/fanqie.png'), id: 15, time: 15},
+  {path: require('../img/list/fengmi.png'), id: 16, time: 20},
+];
