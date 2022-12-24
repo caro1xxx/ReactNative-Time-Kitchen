@@ -54,20 +54,24 @@ const App = () => {
     // 获得食物烹饪结果
     isBoil: async () => {
       try {
+        // 弹出model
+        setflag({
+          fullSrceen: true,
+          isCook: true,
+          isShowModel: true,
+        });
         // fetch
         // alert(appState.current.foodQueue.length);
         let response = await fetch(
           'https://www.fastmock.site/mock/9f6bb525a237d70f41bbba1f0763e8a1/ios/api/v1/result',
         );
         let responseJson = await response.json();
-        setfoodRes({name: responseJson.result, imgUrl: responseJson.img});
+        setfoodRes({
+          name: responseJson.result,
+          imgUrl: responseJson.img,
+          foodLevel: responseJson.foodLevel,
+        });
       } catch (error) {}
-      // 弹出model
-      setflag({
-        fullSrceen: true,
-        isCook: true,
-        isShowModel: true,
-      });
     },
     // change model
     changeResultModel: () => {
@@ -91,7 +95,7 @@ const App = () => {
     isShowModel: false,
   });
   // 烹饪食物结果
-  const [foodRes, setfoodRes] = useState({name: '', imgUrl: ''});
+  const [foodRes, setfoodRes] = useState({name: '', imgUrl: '', foodLevel: ''});
   // AppState
   const appState = useRef(AppState.currentState);
   // 删除食材
