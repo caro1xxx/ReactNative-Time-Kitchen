@@ -20,15 +20,22 @@ const NavBar = props => {
       </TouchableOpacity>
       <View style={(styles.left, styles.block)}></View>
       <View style={(styles.left, styles.rightbody)}>
-        <View style={(styles.left, styles.fenge)}>
+        {/* favorite */}
+        <TouchableOpacity
+          style={(styles.left, styles.fenge)}
+          onPress={() => {
+            props.changeFavoriteModel(true);
+          }}>
           <Image source={require('../img/like.png')} style={styles.icon} />
-        </View>
+        </TouchableOpacity>
+        {/* thrending */}
         <View style={(styles.left, styles.fenge)}>
           <Image
             source={require('../img/fenxi.png')}
             style={styles.insideIcon}
           />
         </View>
+        {/* setting */}
         <View style={(styles.left, styles.fenge)}>
           <Image source={require('../img/setting.png')} style={styles.icon} />
         </View>

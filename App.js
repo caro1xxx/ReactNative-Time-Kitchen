@@ -11,6 +11,7 @@ import Menu from './components/Menu';
 import NavBar from './components/NavBar';
 import Timer from './components/Timer';
 import ResultModel from './components/ResultModel';
+import Favorite from './components/Favorite';
 import {food} from './utils/food';
 import {customAlphabet} from 'nanoid/non-secure';
 import {
@@ -21,6 +22,7 @@ import {
   TouchableOpacity,
   Text,
   AppState,
+  Settings,
 } from 'react-native';
 
 import {
@@ -40,6 +42,7 @@ const App = () => {
         fullSrceen: type,
         isCook: flag.isCook,
         isShowModel: flag.isShowModel,
+        isShowFavorite: flag.isShowFavorite,
       });
     },
     // 食物入队
@@ -59,6 +62,7 @@ const App = () => {
           fullSrceen: true,
           isCook: true,
           isShowModel: true,
+          isShowFavorite: false,
         });
         // fetch
         // alert(appState.current.foodQueue.length);
@@ -66,6 +70,9 @@ const App = () => {
           'https://www.fastmock.site/mock/9f6bb525a237d70f41bbba1f0763e8a1/ios/api/v1/result',
         );
         let responseJson = await response.json();
+        Settings.set({
+          allFood: [0],
+        });
         setfoodRes({
           name: responseJson.result,
           imgUrl: responseJson.img,
@@ -79,6 +86,15 @@ const App = () => {
         fullSrceen: flag.fullSrceen,
         isCook: flag.isCook,
         isShowModel: flag.isShowModel,
+        isShowFavorite: flag.isShowFavorite,
+      });
+    },
+    changeFavoriteModel: type => {
+      setflag({
+        fullSrceen: flag.fullSrceen,
+        isCook: flag.isCook,
+        isShowModel: flag.isShowModel,
+        isShowFavorite: type,
       });
     },
   });
@@ -93,6 +109,7 @@ const App = () => {
     fullSrceen: false,
     isCook: false,
     isShowModel: false,
+    isShowFavorite: false,
   });
   // 烹饪食物结果
   const [foodRes, setfoodRes] = useState({name: '', imgUrl: '', foodLevel: ''});
@@ -111,7 +128,12 @@ const App = () => {
 
   // 开始烹饪
   const cook = () => {
-    setflag({fullSrceen: true, isCook: true, isShowModel: false});
+    setflag({
+      fullSrceen: true,
+      isCook: true,
+      isShowModel: false,
+      isShowFavorite: false,
+    });
     let result = queue.map(item => {
       return food[item].key;
     });
@@ -142,7 +164,8 @@ const App = () => {
       <View style={{flex: 1}}>
         <NavBar
           changefull={componentMessage}
-          fullsrceen={flag.fullSrceen}></NavBar>
+          fullsrceen={flag.fullSrceen}
+          changeFavoriteModel={componentMessage.changeFavoriteModel}></NavBar>
       </View>
       <View
         style={{
@@ -162,6 +185,13 @@ const App = () => {
             changeModel={componentMessage.changeResultModel}
             showModel={flag.isShowModel}
             foodResult={foodRes}></ResultModel>
+        ) : null}
+        {flag.isShowFavorite ? (
+          <Favorite
+            foodResult={foodRes}
+            changeFavoriteModel={
+              componentMessage.changeFavoriteModel
+            }></Favorite>
         ) : null}
         <TouchableOpacity
           onPress={() => {

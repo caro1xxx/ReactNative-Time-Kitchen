@@ -17,7 +17,6 @@ const ResultModel = props => {
         transparent={true}
         visible={props.showModel}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           props.changeModel(false);
         }}>
         <View style={styles.centeredView}>
@@ -50,21 +49,11 @@ const ResultModel = props => {
               }}>
               <Image source={require('../img/close.png')} />
             </TouchableOpacity>
-            <View style={styles.allrigitBack}>
+            {/* <View style={styles.allrigitBack}>
               <TouchableOpacity style={styles.allback}>
                 <Text style={styles.allright}>收入囊中</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  ...styles.allback,
-                  backgroundColor: '#13227a',
-                  width: '20%',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Image source={require('../img/delete.png')} />
-              </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
         </View>
       </Modal>
@@ -160,7 +149,6 @@ const styles = StyleSheet.create({
     shadowOffsetHeight: 10,
     shadowOpacity: 0.5,
     marginRight: 5,
-    width: '70%',
   },
 });
 
