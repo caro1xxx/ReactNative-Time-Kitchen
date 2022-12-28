@@ -1,29 +1,7 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Modal,
-  View,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from 'react-native';
+import {StyleSheet, Modal, View, TouchableOpacity, Image} from 'react-native';
 
-const Item = ({t}) => {
-  return <Image style={styles.item} source={t.img} />;
-};
-
-const Favorite = props => {
-  const data = [
-    {id: 1, img: require('../img/food/yxrs.png')},
-    {id: 2, img: require('../img/food/yxrs.png')},
-    {id: 3, img: require('../img/food/yxrs.png')},
-    {id: 4, img: require('../img/dish.png')},
-    {id: 5, img: require('../img/dish.png')},
-    {id: 6, img: require('../img/dish.png')},
-  ];
-
-  const renderItem = ({item}) => <Item t={item} />;
-
+const Trending = props => {
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -31,25 +9,14 @@ const Favorite = props => {
         transparent={true}
         visible={props.showModel}
         onRequestClose={() => {
-          props.changeFavoriteModel(false);
+          props.changeTrendingModel(false);
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <FlatList
-              onRefresh={type => {
-                return type;
-              }}
-              refreshing={false}
-              numColumns={3}
-              horizontal={false}
-              data={data}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-            />
             <TouchableOpacity
               style={styles.closeBtn}
               onPress={() => {
-                props.changeFavoriteModel(false);
+                props.changeTrendingModel(false);
               }}>
               <Image source={require('../img/close.png')} />
             </TouchableOpacity>
@@ -85,7 +52,7 @@ const styles = StyleSheet.create({
     shadowOffsetHeight: 10,
     shadowOpacity: 0.5,
     elevation: 5,
-    backgroundColor: '#fff',
+    backgroundColor: '#0d6efd',
   },
   openButton: {
     backgroundColor: '#F194FF',
@@ -120,11 +87,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   item: {
-    width: '31%',
+    width: '30%',
     height: 100,
-    marginLeft: '1%',
-    marginRight: '1.0%',
+    marginLeft: '1.5%',
+    marginRight: '1.5%',
   },
 });
 
-export default Favorite;
+export default Trending;

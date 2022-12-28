@@ -29,12 +29,16 @@ const NavBar = props => {
           <Image source={require('../img/like.png')} style={styles.icon} />
         </TouchableOpacity>
         {/* thrending */}
-        <View style={(styles.left, styles.fenge)}>
+        <TouchableOpacity
+          style={(styles.left, styles.fenge)}
+          onPress={() => {
+            props.changeTrendingModel(true);
+          }}>
           <Image
             source={require('../img/fenxi.png')}
             style={styles.insideIcon}
           />
-        </View>
+        </TouchableOpacity>
         {/* setting */}
         <View style={(styles.left, styles.fenge)}>
           <Image source={require('../img/setting.png')} style={styles.icon} />

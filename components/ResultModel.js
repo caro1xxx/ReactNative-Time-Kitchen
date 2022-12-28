@@ -10,6 +10,13 @@ import {
 } from 'react-native';
 
 const ResultModel = props => {
+  // const getData = async () => {
+  //   let response = await fetch('http://127.0.0.1:8000/api/v1/test/');
+  //   let responseJson = await response.json();
+  //   alert(responseJson.code);
+  // };
+  // getData();
+
   return (
     <View style={styles.centeredView}>
       <Modal
